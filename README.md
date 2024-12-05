@@ -4,10 +4,15 @@ Below are the steps used to make changes in repo
 1. Clone buildroot, specify the tag version in readme and commit to your own remote project repo in github or 
    Create new project folder,
    git init my-new-repo                     //Initializes a new Git repository in the directory my-new-repo
+   
    cd my-new-repo                           //Moves into the newly created repository folder
+   
    echo "# My New Repository" > README.md   //Creates a README file with initial content. Replace this with your desired initial files
+   
    git add .                                //Stages all changes (new files, modifications) for commit
+   
    git commit -m "Initial commit"           //Saves the changes in the repository with a message describing the commit
+   
    git submodule add https://git.buildroot.net/buildroot <path where submodule should reside> // clones the submodule and keeps the directory name as is unless specified and
                                              updates .gitmodules. This gets the latest code from the original remote(buidroot developer eg) to parent repo(this repo)
                                              This is same as staging. You can commit and push the changes to the parents repo(this repo).
@@ -27,12 +32,12 @@ Below are the steps used to make changes in repo
    git checkout origin/main                         // refers to the head in the original repo. 
    git add <submodule-path>
    git commit -m "update submoduel to latest commit" // so that the parent submodule points to the latest head that has been updated now
-2. cd buildroot
-3. git checkout 2023.08  # Or any specific version you want. With git add submodule, the latest commit was fetched.
+3. cd buildroot
+4. git checkout 2023.08  # Or any specific version you want. With git add submodule, the latest commit was fetched.
    You might get head detached message meaning you are working on particular commit and not a branch. Detached head occurs when you are working on a commit and not a branch
     As long as you don’t want to commit to original codebase of build root this is okay. If not checkout the branch and start developing. 
     If you just want to work on build root for your own repo, create a branch and push the changes to your remote repo.
-4. Note that as build root is a submodule reference, it is checked in as part of gitmodules file and the new files or modified files are checked in.
+5. Note that as build root is a submodule reference, it is checked in as part of gitmodules file and the new files or modified files are checked in.
    Procedure as below
     git checkout -b my-buildroot-branch
     Make changes
